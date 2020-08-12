@@ -15,17 +15,23 @@ struct ChatBubbleView: View {
     let chatLine: ChatLine
     
     var body: some View {
-        Text(chatLine.line)
-            .font(.callout)
-            .foregroundColor(.black)
-            .padding(10)
-            .background(Color.chatBubbleBack)
-            .cornerRadius(5.0)
-            .shadow(color: shadowColor.opacity(0.5), radius: 4, x: 1, y: 1)
+        HStack {
+            Text(chatLine.line.prefix(550))
+                .lineLimit(nil)
+                .multilineTextAlignment(.leading)
+                .font(.callout)
+                .foregroundColor(.black)
+                .padding(10)
+                .background(Color.chatBubbleBack)
+                .cornerRadius(5.0)
+                .shadow(color: shadowColor.opacity(0.5), radius: 4, x: 1, y: 1)
+            Spacer()
+        }
+        .frame(maxWidth: UIScreen.main.bounds.width * 0.75)
     }
     
     var shadowColor: Color {
-        colorScheme == .dark ? Color.white : Color.black
+        colorScheme == .dark ? Color.gray : Color.black
     }
 
 }
