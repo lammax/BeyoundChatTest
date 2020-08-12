@@ -12,6 +12,6 @@ struct Chat: Codable {
     let lines: [ChatLine]
 }
 
-struct ChatLine: Codable {
+struct ChatLine: Codable, Hashable {
     let line: String
 }

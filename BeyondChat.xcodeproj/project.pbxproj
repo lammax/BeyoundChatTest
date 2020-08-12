@@ -18,6 +18,9 @@
 		043BAB8624E3E1CC004F5056 /* ComonSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8524E3E1CC004F5056 /* ComonSettings.swift */; };
 		043BAB8C24E3E354004F5056 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8B24E3E354004F5056 /* SpeechManager.swift */; };
 		043BAB8F24E3E7B1004F5056 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8E24E3E7B1004F5056 /* ChatModel.swift */; };
+		043BAB9224E3EB81004F5056 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9124E3EB81004F5056 /* ChatBubbleView.swift */; };
+		043BAB9524E3EC06004F5056 /* Color+adds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9424E3EC06004F5056 /* Color+adds.swift */; };
+		043BAB9724E3ED05004F5056 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9624E3ED05004F5056 /* DividerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		043BAB8524E3E1CC004F5056 /* ComonSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComonSettings.swift; sourceTree = "<group>"; };
 		043BAB8B24E3E354004F5056 /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		043BAB8E24E3E7B1004F5056 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		043BAB9124E3EB81004F5056 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
+		043BAB9424E3EC06004F5056 /* Color+adds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+adds.swift"; sourceTree = "<group>"; };
+		043BAB9624E3ED05004F5056 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,8 @@
 		043BAB8324E3E1AC004F5056 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				043BAB9324E3EBFA004F5056 /* Extensions */,
+				043BAB9024E3EB70004F5056 /* Components */,
 				043BAB8D24E3E7A4004F5056 /* Models */,
 				043BAB8A24E3E347004F5056 /* Managers */,
 				043BAB8424E3E1B7004F5056 /* Settings */,
@@ -136,6 +144,23 @@
 				043BAB8E24E3E7B1004F5056 /* ChatModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		043BAB9024E3EB70004F5056 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB9124E3EB81004F5056 /* ChatBubbleView.swift */,
+				043BAB9624E3ED05004F5056 /* DividerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		043BAB9324E3EBFA004F5056 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB9424E3EC06004F5056 /* Color+adds.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,13 +234,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043BAB9724E3ED05004F5056 /* DividerView.swift in Sources */,
 				043BAB6824E3E154004F5056 /* AppDelegate.swift in Sources */,
+				043BAB9524E3EC06004F5056 /* Color+adds.swift in Sources */,
 				043BAB8C24E3E354004F5056 /* SpeechManager.swift in Sources */,
 				043BAB8124E3E1A1004F5056 /* ChatScreenView.swift in Sources */,
 				043BAB8F24E3E7B1004F5056 /* ChatModel.swift in Sources */,
 				043BAB6A24E3E154004F5056 /* SceneDelegate.swift in Sources */,
 				043BAB8224E3E1A1004F5056 /* ChatScreenModel.swift in Sources */,
 				043BAB8624E3E1CC004F5056 /* ComonSettings.swift in Sources */,
+				043BAB9224E3EB81004F5056 /* ChatBubbleView.swift in Sources */,
 				043BAB8024E3E1A1004F5056 /* ChatScreenIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

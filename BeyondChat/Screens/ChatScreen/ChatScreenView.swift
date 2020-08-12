@@ -20,11 +20,59 @@ struct ChatScreenView: View {
     @ObservedObject var intent = ChatScreenIntent.sharedInstance
     
     var body: some View {
-        ZStack {
-            Text("ChatScreen")
+        VStack {
+            TopBarView()
+            Spacer()
+            ChatView(chat: $intent.chat)
         }
         .onAppear {
             self.intent.setup(settings: self.settings)
+        }
+    }
+    
+}
+
+struct TopBarView: View {
+
+    @Environment(\.colorScheme) var colorScheme
+
+    var body: some View {
+        VStack(alignment: .center, spacing: .zero) {
+            Text("Dialogue")
+                .font(.title)
+                .foregroundColor(textColor)
+                .padding(.vertical, 10)
+           
+            DividerView(color: .gray)
+        }
+    }
+    
+    
+    var textColor: Color {
+       colorScheme == .dark ? Color.white : Color.black
+    }
+
+}
+
+struct ChatView: View {
+    
+    @Binding var chat: Chat?
+    
+    var body: some View {
+        Group {
+            if chat != nil {
+                VStack(alignment: .leading, spacing: 30) {
+                    ForEach(chat!.lines, id: \.self) { chatLine in
+                        HStack {
+                            ChatBubbleView(chatLine: chatLine)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                }
+            } else {
+                EmptyView()
+            }
         }
     }
     
