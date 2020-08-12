@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		043BAB6824E3E154004F5056 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB6724E3E154004F5056 /* AppDelegate.swift */; };
 		043BAB6A24E3E154004F5056 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB6924E3E154004F5056 /* SceneDelegate.swift */; };
-		043BAB6C24E3E154004F5056 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB6B24E3E154004F5056 /* ContentView.swift */; };
 		043BAB6E24E3E156004F5056 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043BAB6D24E3E156004F5056 /* Assets.xcassets */; };
 		043BAB7124E3E156004F5056 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043BAB7024E3E156004F5056 /* Preview Assets.xcassets */; };
 		043BAB7424E3E156004F5056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043BAB7224E3E156004F5056 /* LaunchScreen.storyboard */; };
+		043BAB8024E3E1A1004F5056 /* ChatScreenIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB7D24E3E1A1004F5056 /* ChatScreenIntent.swift */; };
+		043BAB8124E3E1A1004F5056 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB7E24E3E1A1004F5056 /* ChatScreenView.swift */; };
+		043BAB8224E3E1A1004F5056 /* ChatScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB7F24E3E1A1004F5056 /* ChatScreenModel.swift */; };
+		043BAB8624E3E1CC004F5056 /* ComonSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8524E3E1CC004F5056 /* ComonSettings.swift */; };
+		043BAB8C24E3E354004F5056 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8B24E3E354004F5056 /* SpeechManager.swift */; };
+		043BAB8F24E3E7B1004F5056 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB8E24E3E7B1004F5056 /* ChatModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		043BAB6424E3E154004F5056 /* BeyondChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeyondChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043BAB6724E3E154004F5056 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		043BAB6924E3E154004F5056 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		043BAB6B24E3E154004F5056 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		043BAB6D24E3E156004F5056 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		043BAB7024E3E156004F5056 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		043BAB7324E3E156004F5056 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		043BAB7524E3E156004F5056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		043BAB7D24E3E1A1004F5056 /* ChatScreenIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenIntent.swift; sourceTree = "<group>"; };
+		043BAB7E24E3E1A1004F5056 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
+		043BAB7F24E3E1A1004F5056 /* ChatScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenModel.swift; sourceTree = "<group>"; };
+		043BAB8524E3E1CC004F5056 /* ComonSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComonSettings.swift; sourceTree = "<group>"; };
+		043BAB8B24E3E354004F5056 /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		043BAB8E24E3E7B1004F5056 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +50,7 @@
 		043BAB5B24E3E154004F5056 = {
 			isa = PBXGroup;
 			children = (
+				043BAB8324E3E1AC004F5056 /* Lib */,
 				043BAB6624E3E154004F5056 /* BeyondChat */,
 				043BAB6524E3E154004F5056 /* Products */,
 			);
@@ -56,9 +67,9 @@
 		043BAB6624E3E154004F5056 /* BeyondChat */ = {
 			isa = PBXGroup;
 			children = (
+				043BAB7B24E3E17E004F5056 /* Screens */,
 				043BAB6724E3E154004F5056 /* AppDelegate.swift */,
 				043BAB6924E3E154004F5056 /* SceneDelegate.swift */,
-				043BAB6B24E3E154004F5056 /* ContentView.swift */,
 				043BAB6D24E3E156004F5056 /* Assets.xcassets */,
 				043BAB7224E3E156004F5056 /* LaunchScreen.storyboard */,
 				043BAB7524E3E156004F5056 /* Info.plist */,
@@ -73,6 +84,58 @@
 				043BAB7024E3E156004F5056 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		043BAB7B24E3E17E004F5056 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB7C24E3E18B004F5056 /* ChatScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		043BAB7C24E3E18B004F5056 /* ChatScreen */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB7E24E3E1A1004F5056 /* ChatScreenView.swift */,
+				043BAB7D24E3E1A1004F5056 /* ChatScreenIntent.swift */,
+				043BAB7F24E3E1A1004F5056 /* ChatScreenModel.swift */,
+			);
+			path = ChatScreen;
+			sourceTree = "<group>";
+		};
+		043BAB8324E3E1AC004F5056 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB8D24E3E7A4004F5056 /* Models */,
+				043BAB8A24E3E347004F5056 /* Managers */,
+				043BAB8424E3E1B7004F5056 /* Settings */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		043BAB8424E3E1B7004F5056 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB8524E3E1CC004F5056 /* ComonSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		043BAB8A24E3E347004F5056 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB8B24E3E354004F5056 /* SpeechManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		043BAB8D24E3E7A4004F5056 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				043BAB8E24E3E7B1004F5056 /* ChatModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +210,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				043BAB6824E3E154004F5056 /* AppDelegate.swift in Sources */,
+				043BAB8C24E3E354004F5056 /* SpeechManager.swift in Sources */,
+				043BAB8124E3E1A1004F5056 /* ChatScreenView.swift in Sources */,
+				043BAB8F24E3E7B1004F5056 /* ChatModel.swift in Sources */,
 				043BAB6A24E3E154004F5056 /* SceneDelegate.swift in Sources */,
-				043BAB6C24E3E154004F5056 /* ContentView.swift in Sources */,
+				043BAB8224E3E1A1004F5056 /* ChatScreenModel.swift in Sources */,
+				043BAB8624E3E1CC004F5056 /* ComonSettings.swift in Sources */,
+				043BAB8024E3E1A1004F5056 /* ChatScreenIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +361,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lammax.ios.test.beyondchat.BeyondChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lammax.ios.test.beyondchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,7 +381,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lammax.ios.test.beyondchat.BeyondChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lammax.ios.test.beyondchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
