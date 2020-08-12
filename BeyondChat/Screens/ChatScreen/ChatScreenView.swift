@@ -19,16 +19,20 @@ struct ChatScreenView: View {
     
     @ObservedObject var intent = ChatScreenIntent.sharedInstance
     
+    @State private var viewSize: CGSize = .zero
+    
     var body: some View {
-        VStack {
+        ZStack {
             TopBarView()
-            Spacer()
-            ChatView(chat: $intent.chat)
+            ChatView(chatLines: $intent.chatLines, viewSize: $viewSize)
+               // .offset(y: UIScreen.main.bounds.height - viewSize.height)
         }
         .onAppear {
             self.intent.setup(settings: self.settings)
         }
     }
+    
+    private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
     
 }
 
@@ -44,6 +48,7 @@ struct TopBarView: View {
                 .padding(.vertical, 10)
            
             DividerView(color: .gray)
+            Spacer()
         }
     }
     
@@ -56,26 +61,24 @@ struct TopBarView: View {
 
 struct ChatView: View {
     
-    @Binding var chat: Chat?
+    @Binding var chatLines: [ChatLine]
+    @Binding var viewSize: CGSize
+    
+    @State private var animationAmount: CGFloat = 1
     
     var body: some View {
-        Group {
-            if chat != nil {
-                VStack(alignment: .leading, spacing: 30) {
-                    ForEach(chat!.lines, id: \.self) { chatLine in
-                        HStack {
-                            ChatBubbleView(chatLine: chatLine)
-                            Spacer()
-                        }
-                        .padding(.horizontal, 20)
-                    }
+        VStack(alignment: .leading, spacing: 30) {
+            Spacer()
+            ForEach(0..<self.chatLines.count, id: \.self) { id in
+                HStack {
+                    ChatBubbleView(chatLine: self.chatLines[id], isLast: id == self.chatLines.count-1)
+                    Spacer()
                 }
-            } else {
-                EmptyView()
+                .padding(.horizontal, 20)
             }
         }
     }
-    
+
 }
 
 struct ChatScreenView_Previews: PreviewProvider {

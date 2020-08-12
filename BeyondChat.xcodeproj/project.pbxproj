@@ -21,6 +21,7 @@
 		043BAB9224E3EB81004F5056 /* ChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9124E3EB81004F5056 /* ChatBubbleView.swift */; };
 		043BAB9524E3EC06004F5056 /* Color+adds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9424E3EC06004F5056 /* Color+adds.swift */; };
 		043BAB9724E3ED05004F5056 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BAB9624E3ED05004F5056 /* DividerView.swift */; };
+		04D63BBB24E4151900C75C67 /* GeometryModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D63BBA24E4151900C75C67 /* GeometryModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		043BAB9124E3EB81004F5056 /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		043BAB9424E3EC06004F5056 /* Color+adds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+adds.swift"; sourceTree = "<group>"; };
 		043BAB9624E3ED05004F5056 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		04D63BBA24E4151900C75C67 /* GeometryModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		043BAB8324E3E1AC004F5056 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				04D63BB924E4150300C75C67 /* Modifiers */,
 				043BAB9324E3EBFA004F5056 /* Extensions */,
 				043BAB9024E3EB70004F5056 /* Components */,
 				043BAB8D24E3E7A4004F5056 /* Models */,
@@ -161,6 +164,14 @@
 				043BAB9424E3EC06004F5056 /* Color+adds.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04D63BB924E4150300C75C67 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				04D63BBA24E4151900C75C67 /* GeometryModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 				043BAB6824E3E154004F5056 /* AppDelegate.swift in Sources */,
 				043BAB9524E3EC06004F5056 /* Color+adds.swift in Sources */,
 				043BAB8C24E3E354004F5056 /* SpeechManager.swift in Sources */,
+				04D63BBB24E4151900C75C67 /* GeometryModifier.swift in Sources */,
 				043BAB8124E3E1A1004F5056 /* ChatScreenView.swift in Sources */,
 				043BAB8F24E3E7B1004F5056 /* ChatModel.swift in Sources */,
 				043BAB6A24E3E154004F5056 /* SceneDelegate.swift in Sources */,

@@ -29,8 +29,8 @@ class SpeechManager {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: self.langVoice.rawValue)
         
-        print(AVSpeechUtteranceMinimumSpeechRate)
-        print(AVSpeechUtteranceMaximumSpeechRate)
+        //print(AVSpeechUtteranceMinimumSpeechRate)
+        //print(AVSpeechUtteranceMaximumSpeechRate)
         
         synthesizer.speak(utterance)
     }

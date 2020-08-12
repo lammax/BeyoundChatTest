@@ -16,10 +16,12 @@ class ChatScreenIntent: ObservableObject {
     
     static let sharedInstance = ChatScreenIntent()
     
-    @Published var chat: Chat?
+    @Published var chatLines: [ChatLine] = []
     
     private let speech = SpeechManager.sharedInstance
     private var settings: CommonSettings!
+    
+    private var linesToShow: [ChatLine] = []
     
     func setup(settings: CommonSettings) {
         self.settings = settings
@@ -31,7 +33,9 @@ class ChatScreenIntent: ObservableObject {
         
         do {
             let decoder = JSONDecoder()
-            self.chat = try decoder.decode(Chat.self, from: chatData)
+            let chat = try decoder.decode(Chat.self, from: chatData)
+            self.linesToShow = chat.lines.reversed()
+            self.showLineWithTimer(for: 1.0)
         } catch {
             print(error.localizedDescription)
         }
@@ -39,6 +43,23 @@ class ChatScreenIntent: ObservableObject {
     
     func say(this text: String) {
         speech.say(this: text)
+    }
+    
+    private func showLineWithTimer(for delay: Double) {
+        Timer.scheduledTimer(withTimeInterval: delay, repeats: true) { timer in
+            
+            if let line = self.linesToShow.popLast() {
+                self.chatLines.append(line)
+                Timer.scheduledTimer(withTimeInterval: 0.0, repeats: false) { timer in
+                    self.speech.say(this: line.line)
+                    timer.invalidate()
+                }
+            } else {
+                timer.invalidate()
+            }
+            
+            print( self.linesToShow.count)
+        }
     }
     
 }
