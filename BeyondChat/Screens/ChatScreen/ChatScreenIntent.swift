@@ -26,6 +26,7 @@ class ChatScreenIntent: ObservableObject {
     func setup(settings: CommonSettings) {
         self.settings = settings
         self.setupTextLines()
+        self.setupSpeech()
     }
     
     private func setupTextLines() {
@@ -35,7 +36,7 @@ class ChatScreenIntent: ObservableObject {
             let decoder = JSONDecoder()
             let chat = try decoder.decode(Chat.self, from: chatData)
             self.linesToShow = chat.lines.reversed()
-            self.showLineWithTimer(for: 1.0)
+            self.showLineWithTimer(for: 0.0)
         } catch {
             print(error.localizedDescription)
         }
@@ -46,19 +47,28 @@ class ChatScreenIntent: ObservableObject {
     }
     
     private func showLineWithTimer(for delay: Double) {
-        Timer.scheduledTimer(withTimeInterval: delay, repeats: true) { timer in
+        
+        //perhaps (IMHO) better to use NotificationCenter for animation-logic-chain flow control
+        
+        Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { timer in
             
             if let line = self.linesToShow.popLast() {
                 self.chatLines.append(line)
-                Timer.scheduledTimer(withTimeInterval: 0.0, repeats: false) { timer in
+                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer2 in
                     self.speech.say(this: line.line)
-                    timer.invalidate()
+                    timer2.invalidate()
                 }
             } else {
                 timer.invalidate()
             }
             
             print( self.linesToShow.count)
+        }
+    }
+    
+    private func setupSpeech() {
+        self.speech.set {
+            self.showLineWithTimer(for: 0.5)
         }
     }
     

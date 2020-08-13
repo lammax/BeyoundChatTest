@@ -14,12 +14,19 @@ enum LangVoice: String {
     case Australian = "en-AU"
 }
 
-class SpeechManager {
+class SpeechManager: NSObject {
     
     static let sharedInstance = SpeechManager()
     
     private let synthesizer = AVSpeechSynthesizer()
     private var langVoice: LangVoice = .American
+    
+    private var speechCompletion: (() -> Void)?
+    
+    override init() {
+        super.init()
+        synthesizer.delegate = self
+    }
     
     func set(voice: LangVoice) {
         self.langVoice = voice
@@ -33,6 +40,18 @@ class SpeechManager {
         //print(AVSpeechUtteranceMaximumSpeechRate)
         
         synthesizer.speak(utterance)
+    }
+    
+    func set(speech completion: (() -> Void)?) {
+        self.speechCompletion = completion
+    }
+    
+}
+
+extension SpeechManager: AVSpeechSynthesizerDelegate {
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        self.speechCompletion?()
     }
     
 }

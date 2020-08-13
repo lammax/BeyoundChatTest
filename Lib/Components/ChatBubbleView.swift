@@ -162,7 +162,7 @@ struct CallOutBubbleView: View {
 
                 path.closeSubpath()
             }
-            .fill(Color.green)//(Color.chatBubbleBack)
+            .fill(Color.chatBubbleBack)
             .frame(width: geometry.size.width + self.calloutSize.width, height: geometry.size.height)
             .shadow(color: self.shadowColor.opacity(0.5), radius: 4, x: -1, y: 1)
         }

@@ -19,20 +19,26 @@ struct ChatScreenView: View {
     
     @ObservedObject var intent = ChatScreenIntent.sharedInstance
     
-    @State private var viewHeight: CGFloat = UIScreen.main.bounds.height
+    @State private var viewOffsetY: CGFloat = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
+            ChatView(chatLines: $intent.chatLines, viewOffsetY: $viewOffsetY)
+                .offset(y: viewOffsetY)
+
             TopBarView()
-            ChatView(chatLines: $intent.chatLines, viewHeight: $viewHeight)
-                .offset(y: -viewHeight*1.5 + UIScreen.main.bounds.height / 2.0 - 10.0)
+            
+            VStack {
+                Spacer()
+            }
+            .frame(width: 5, height: UIScreen.main.bounds.height - 20, alignment: .center)
+            .background(Color.yellow)
         }
+        .background(Color.blue)
         .onAppear {
             self.intent.setup(settings: self.settings)
         }
     }
-    
-    private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
     
 }
 
@@ -62,31 +68,79 @@ struct TopBarView: View {
 struct ChatView: View {
     
     @Binding var chatLines: [ChatLine]
-    @Binding var viewHeight: CGFloat
+    @Binding var viewOffsetY: CGFloat
+    @State private var viewHeight: CGFloat = .zero
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            GeometryReader { (g) -> Color in
-                DispatchQueue.main.async {
-                    self.offsetYAnim({ self.viewHeight = UIScreen.main.bounds.height - g.size.height })
-                    
-                    print(self.viewHeight)
+        ZStack {
+            VStack(alignment: .leading, spacing: 30) {
+                ForEach(0..<self.chatLines.count, id: \.self) { id in
+                    HStack {
+                        ChatBubbleView(chatLine: self.chatLines[id], isLast: id == self.chatLines.count-1)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
                 }
-                return Color.clear
             }
-            ForEach(0..<self.chatLines.count, id: \.self) { id in
-                HStack {
-                    ChatBubbleView(chatLine: self.chatLines[id], isLast: id == self.chatLines.count-1)
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
+            .background(ChatBackView(viewOffsetY: $viewOffsetY, viewHeight: $viewHeight))
+
+            VStack {
+                Spacer()
             }
+            .frame(width: 5, height: viewHeight, alignment: .center)
+            .background(Color.blue)
         }
     }
     
-    private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 1.0), $0) }
+}
+
+struct ChatBackView: View {
+    
+    @Binding var viewOffsetY: CGFloat
+    @Binding var viewHeight: CGFloat
+
+    var body: some View {
+        GeometryReader { (g) -> Color in
+            DispatchQueue.main.async {
+                let offset = (UIScreen.main.bounds.size.height - 20.0) / 2.0 - g.size.height
+                self.viewHeight = g.size.height
+                self.offsetYAnim({ self.viewOffsetY = offset })
+                
+                print(UIScreen.main.bounds.size.height)
+                print(offset)
+            }
+            return Color.clear
+        }
+
+    }
+    
+    private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
 
 }
+
+/*struct MainBackView: View {
+    
+    //@Binding var viewHeight: CGFloat
+    
+    var body: some View {
+        GeometryReader { (g) -> Color in
+            DispatchQueue.main.async {
+                //let offset = UIScreen.main.bounds.size.height / 2.0 - g.frame(in: .global).size.height
+                //self.offsetYAnim({ self.viewHeight = offset })
+                
+                print("MainBackView height = ", g.size.height)
+                print("UIScreen.main.bounds.size.height = ", UIScreen.main.bounds.size.height)
+
+                //print(offset)
+            }
+            return Color.clear
+        }
+
+    }
+    
+    //private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
+
+}*/
 
 struct ChatScreenView_Previews: PreviewProvider {
     static var previews: some View {
