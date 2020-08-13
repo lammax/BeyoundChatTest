@@ -35,15 +35,11 @@ class SpeechManager: NSObject {
     func say(this text: String) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: self.langVoice.rawValue)
-        
-        //print(AVSpeechUtteranceMinimumSpeechRate)
-        //print(AVSpeechUtteranceMaximumSpeechRate)
-        
         synthesizer.speak(utterance)
     }
     
-    func set(speech completion: (() -> Void)?) {
-        self.speechCompletion = completion
+    func set(speechCompletion: (() -> Void)?) {
+        self.speechCompletion = speechCompletion
     }
     
 }

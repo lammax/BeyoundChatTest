@@ -60,9 +60,9 @@ class ChatScreenIntent: ObservableObject {
                 }
             } else {
                 timer.invalidate()
+                self.speech.set(speechCompletion: nil)
             }
-            
-            print( self.linesToShow.count)
+
         }
     }
     

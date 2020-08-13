@@ -11,14 +11,10 @@ import SwiftUI
 
 struct ChatBubbleView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    
     @State private var bubbleOpacity: Double = 0.0
     
     let chatLine: ChatLine
     let isLast: Bool
-    
-    private let appearAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
     
     var body: some View {
         HStack {
@@ -28,7 +24,6 @@ struct ChatBubbleView: View {
                 .font(.callout)
                 .foregroundColor(.black)
                 .padding(.vertical, 10)
-                //.padding(.trailing, 15)
                 .padding(.leading, 17)
                 .background(CallOutBubbleView())
                 .opacity(bubbleOpacity)
@@ -46,9 +41,7 @@ struct ChatBubbleView: View {
         }
     }
     
-    var shadowColor: Color {
-        colorScheme == .dark ? Color.gray : Color.black
-    }
+    private let appearAnim: (()->()) -> Void = { withAnimation(.linear(duration: 0.5), $0) }
     
 }
 
@@ -65,7 +58,6 @@ struct CallOutBubbleView: View {
 
     private let calloutSize: CGSize = CGSize(width: 15, height: 18)
     private let cornerRadius: CGFloat = 5
-    private let radiusOffset: CGFloat = pow(25/2.0, 0.5)
 
     var body: some View {
         GeometryReader { geometry in

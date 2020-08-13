@@ -40,5 +40,6 @@ extension Color {
    
    static let chatViewBack =  Color(hex: "F9FAFB")
    static let chatBubbleBack =  Color(hex: "FDFDFE")
+   static let darkGray = Color(hex: "2A2B2D")
 
 }
