@@ -19,13 +19,13 @@ struct ChatScreenView: View {
     
     @ObservedObject var intent = ChatScreenIntent.sharedInstance
     
-    @State private var viewSize: CGSize = .zero
+    @State private var viewHeight: CGFloat = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack {
             TopBarView()
-            ChatView(chatLines: $intent.chatLines, viewSize: $viewSize)
-               // .offset(y: UIScreen.main.bounds.height - viewSize.height)
+            ChatView(chatLines: $intent.chatLines, viewHeight: $viewHeight)
+                .offset(y: -viewHeight*1.5 + UIScreen.main.bounds.height / 2.0 - 10.0)
         }
         .onAppear {
             self.intent.setup(settings: self.settings)
@@ -62,13 +62,18 @@ struct TopBarView: View {
 struct ChatView: View {
     
     @Binding var chatLines: [ChatLine]
-    @Binding var viewSize: CGSize
-    
-    @State private var animationAmount: CGFloat = 1
+    @Binding var viewHeight: CGFloat
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            Spacer()
+            GeometryReader { (g) -> Color in
+                DispatchQueue.main.async {
+                    self.offsetYAnim({ self.viewHeight = UIScreen.main.bounds.height - g.size.height })
+                    
+                    print(self.viewHeight)
+                }
+                return Color.clear
+            }
             ForEach(0..<self.chatLines.count, id: \.self) { id in
                 HStack {
                     ChatBubbleView(chatLine: self.chatLines[id], isLast: id == self.chatLines.count-1)
@@ -78,6 +83,8 @@ struct ChatView: View {
             }
         }
     }
+    
+    private let offsetYAnim: (()->()) -> Void = { withAnimation(.linear(duration: 1.0), $0) }
 
 }
 
